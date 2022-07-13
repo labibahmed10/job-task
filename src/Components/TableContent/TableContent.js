@@ -1,4 +1,6 @@
 import React from "react";
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBin2Fill } from "react-icons/ri";
 
 const TableContent = () => {
   return (
@@ -12,22 +14,25 @@ const TableContent = () => {
             <th>Phone Number</th>
             <th>Email</th>
             <th>Hobbies</th>
-            <th></th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="hover text-center">
-            <th>
-              <input type="checkbox" name="depends" id="" />
-            </th>
+          <tr class="hover text-center font-semibold">
+            <td>
+              <input className="w-5 h-5" type="checkbox" name="depends" id="" />
+            </td>
             <td>Hart Hagerty</td>
             <td>Desktop Support Technician</td>
             <td>Purple</td>
             <td>Purple</td>
             <td>Purple</td>
-            <td>Purple</td>
+            <td className="flex justify-center gap-10">
+              <FaEdit className="w-8 h-8 cursor-pointer" />
+              <RiDeleteBin2Fill className="w-8 h-8 cursor-pointer" />
+            </td>
           </tr>
-          <tr className="text-center+">
+          <tr className="text-center">
             <td></td>
             <td></td>
             <td></td>
@@ -35,7 +40,10 @@ const TableContent = () => {
             <td></td>
             <td></td>
             <td>
-              <button>Hello</button>
+              {/* <button className="btn ">Add Note</button> */}
+              <label for="my-modal-3" class="btn modal-button">
+                open modal
+              </label>
             </td>
           </tr>
         </tbody>
