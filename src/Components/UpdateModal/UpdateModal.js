@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const FormModal = () => {
+const UpdateModal = () => {
   const {
     register,
     formState: { errors },
@@ -11,23 +11,23 @@ const FormModal = () => {
   const onSubmit = (data) => console.log(data);
   return (
     <div>
-      <input type="checkbox" id="formModal" class="modal-toggle" />
+      <input type="checkbox" id="updateModal" class="modal-toggle" />
       <div class="modal">
         <div class="modal-box relative">
-          <label for="formModal" class="btn btn-sm btn-circle absolute right-2 top-2">
+          <label for="updateModal" class="btn btn-sm btn-circle absolute right-2 top-2">
             ✕
           </label>
 
           <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
             <input
-              placeholder="Your Name"
+              placeholder="New Name"
               className="border px-1 rounded-md py-2 mt-6"
               {...register("name", { required: true })}
             />
             {errors.name && <p className="text-red-500">Your name is required!</p>}
 
             <input
-              placeholder="Your Number"
+              placeholder="New Number"
               type="number"
               className="border px-1 rounded-md py-2"
               {...register("number", { required: true })}
@@ -35,7 +35,7 @@ const FormModal = () => {
             {errors.number && <p className="text-red-500">Your number is required!</p>}
 
             <input
-              placeholder="Your Email"
+              placeholder="New Email"
               type="email"
               className="border px-1 rounded-md py-2"
               {...register("mail", { required: true })}
@@ -43,7 +43,7 @@ const FormModal = () => {
             {errors.mail && <p className="text-red-500">Your email is required!</p>}
 
             <input
-              placeholder="Your Hobbies"
+              placeholder="New Hobbies"
               className="border px-1 rounded-md py-2"
               {...register("hobbies", { required: true })}
             />
@@ -59,4 +59,4 @@ const FormModal = () => {
   );
 };
 
-export default FormModal;
+export default UpdateModal;

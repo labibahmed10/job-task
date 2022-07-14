@@ -22,14 +22,17 @@ const TableContent = () => {
             <td>
               <input className="w-5 h-5" type="checkbox" name="depends" id="" />
             </td>
-            <td>Hart Hagerty</td>
-            <td>Desktop Support Technician</td>
-            <td>Purple</td>
-            <td>Purple</td>
-            <td>Purple</td>
-            <td className="flex justify-center gap-10">
-              <FaEdit className="w-8 h-8 cursor-pointer" />
+            <td>1</td>
+            <td>Harry Porter</td>
+            <td>016302812121</td>
+            <td>Purple@gmail.com</td>
+            <td>Coding,lecture,paragraph</td>
+            <td className="flex justify-center items-center gap-6">
+              <label for="updateModal" class="modal-button">
+                <FaEdit className="w-8 h-8 cursor-pointer" />
+              </label>
               <RiDeleteBin2Fill className="w-8 h-8 cursor-pointer" />
+              <button className="btn btn-sm">Send</button>
             </td>
           </tr>
           <tr className="text-center">
@@ -40,9 +43,8 @@ const TableContent = () => {
             <td></td>
             <td></td>
             <td>
-              {/* <button className="btn ">Add Note</button> */}
-              <label for="my-modal-3" class="btn modal-button">
-                open modal
+              <label for="formModal" class="btn modal-button">
+                Add New
               </label>
             </td>
           </tr>
