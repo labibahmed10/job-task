@@ -13,7 +13,6 @@ const HomePage = () => {
     <section>
       <TableContent data={data} refetch={refetch} />
       <FormModal refetch={refetch} />
-      {/* <UpdateModal refetch={refetch} /> */}
     </section>
   );
 };
