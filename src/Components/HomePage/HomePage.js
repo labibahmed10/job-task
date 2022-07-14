@@ -9,13 +9,11 @@ const HomePage = () => {
     fetch("http://localhost:5000/allInfoOfUser").then((res) => res.json())
   );
 
-  // console.log(data);
-
   return (
     <section>
-      <TableContent data={data} />
+      <TableContent data={data} refetch={refetch} />
       <FormModal refetch={refetch} />
-      <UpdateModal refetch={refetch} />
+      {/* <UpdateModal refetch={refetch} /> */}
     </section>
   );
 };

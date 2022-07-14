@@ -30,10 +30,10 @@ const FormModal = ({ refetch }) => {
   };
   return (
     <div>
-      <input type="checkbox" id="formModal" class="modal-toggle" />
-      <div class="modal">
-        <div class="modal-box relative">
-          <label for="formModal" class="btn btn-sm btn-circle absolute right-2 top-2">
+      <input type="checkbox" id="formModal" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box relative">
+          <label htmlFor="formModal" className="btn btn-sm btn-circle absolute right-2 top-2">
             ✕
           </label>
 
