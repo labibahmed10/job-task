@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
-const FormModal = () => {
+const FormModal = ({ refetch }) => {
   const {
     register,
     formState: { errors },
@@ -11,7 +12,7 @@ const FormModal = () => {
   const onSubmit = (userData) => {
     console.log(userData);
 
-    fetch("http://localhost:5000/allInfoOfUser", {
+    fetch("http://localhost:5000/addInfoOfUser", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -19,7 +20,13 @@ const FormModal = () => {
       body: JSON.stringify(userData),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          refetch();
+          Swal.fire({ title: "Thanks for sharing your information!", icon: "success" });
+        }
+      });
   };
   return (
     <div>
@@ -50,9 +57,9 @@ const FormModal = () => {
               placeholder="Your Email"
               type="email"
               className="border px-1 rounded-md py-2"
-              {...register("mail", { required: true })}
+              {...register("email", { required: true })}
             />
-            {errors.mail && <p className="text-red-500">Your email is required!</p>}
+            {errors.email && <p className="text-red-500">Your email is required!</p>}
 
             <input
               placeholder="Your Hobbies"

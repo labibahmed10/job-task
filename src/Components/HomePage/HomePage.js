@@ -1,14 +1,21 @@
 import React from "react";
+import { useQuery } from "react-query";
 import FormModal from "../FormModal/FormModal";
 import TableContent from "../TableContent/TableContent";
 import UpdateModal from "../UpdateModal/UpdateModal";
 
 const HomePage = () => {
+  const { isLoading, error, data, refetch } = useQuery("userData", () =>
+    fetch("http://localhost:5000/allInfoOfUser").then((res) => res.json())
+  );
+
+  // console.log(data);
+
   return (
     <section>
-      <TableContent />
-      <FormModal />
-      <UpdateModal />
+      <TableContent data={data} />
+      <FormModal refetch={refetch} />
+      <UpdateModal refetch={refetch} />
     </section>
   );
 };
