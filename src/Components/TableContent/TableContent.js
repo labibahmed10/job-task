@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import Swal from "sweetalert2";
 import UpdateModal from "../UpdateModal/UpdateModal";
+import emailjs from "@emailjs/browser";
 
 const TableContent = ({ data, refetch }) => {
   // to update a user information
@@ -37,12 +38,8 @@ const TableContent = ({ data, refetch }) => {
       });
   };
 
-  // delete a user
-
+  // function to delete a user
   const deleteUserInfo = (uData) => {
-    // console.log(singleData);
-    // console.log(uData);
-
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -68,6 +65,10 @@ const TableContent = ({ data, refetch }) => {
     });
   };
 
+  // checking value of individual and sending them in email
+  const [checked, isChecked] = useState(false);
+  const { name, email, number, hobbies } = checked;
+
   return (
     <div className="overflow-x-auto">
       <UpdateModal register={register} handleSubmit={handleSubmit} errors={errors} onSubmit={onSubmit} />
@@ -87,19 +88,26 @@ const TableContent = ({ data, refetch }) => {
           {data?.map((uData, i) => (
             <tr key={i} className="hover text-center font-semibold">
               <td>
-                <input className="w-5 h-5" type="checkbox" name="checkbox" id="" />
+                <input onChange={() => isChecked(uData)} type="checkbox" className="checkbox" />
               </td>
               <td>{i + 1}</td>
               <td>{uData?.name}</td>
               <td>{uData?.number}</td>
               <td>{uData?.email}</td>
               <td>{uData?.hobbies}</td>
+
               <td className="flex justify-center items-center gap-6">
                 <label onClick={() => setSingleData(uData)} htmlFor="updateModal" className="modal-button">
                   <FaEdit className="w-8 h-8 cursor-pointer" />
                 </label>
                 <RiDeleteBin2Fill onClick={() => deleteUserInfo(uData)} className="w-8 h-8 cursor-pointer" />
-                <button className="btn btn-sm">Send</button>
+                <button className="btn btn-sm">
+                  {checked ? (
+                    <a href={`mailto: info@redpositive.in?body=${[name, number, email, hobbies]}`}>Send</a>
+                  ) : (
+                    <div>Send</div>
+                  )}
+                </button>
               </td>
             </tr>
           ))}
